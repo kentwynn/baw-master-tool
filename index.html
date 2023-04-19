@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BAW Code Editor Tool</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;"
+    />
+
+    <!-- Load Monacco -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/vs/loader.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/vs/editor/editor.main.min.css"
+      integrity="sha512-wB3xfL98hWg1bpkVYSyL0js/Jx9s7FsDg9aYO6nOMSJTgPuk/PFqxXQJKKSUjteZjeYrfgo9NFBOA1r9HwDuZw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Load Custom Style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container grid gap-2 h-full bg-gray-50 p-4">
+      <div
+        id="alert-border"
+        class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
+        role="alert"
+      >
+        <svg
+          class="flex-shrink-0 w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <div id="alert-border-text" class="ml-3 text-sm font-medium">
+          Nothing to show
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button
+          id="btn-paste-to-editor"
+          class="cursor-pointer bg-gray-700 text-white px-4 py-1 rounded font-light hover:bg-gray-900"
+        >
+          Paste To BAW Editor
+        </button>
+        <button
+          id="btn-save-to-editor"
+          class="cursor-pointer bg-gray-900 text-white px-4 py-1 rounded font-light hover:bg-black"
+        >
+          Save To BAW Editor
+        </button>
+      </div>
+      <div class="flex gap-1">
+        <button
+          data-id="js-editor"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle active hover:bg-gray-900"
+        >
+          BAW INLINE JS
+        </button>
+        <button
+          data-id="css-editor"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
+        >
+          BAW CSS
+        </button>
+        <button
+          data-id="html-editor"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
+        >
+          BAW HTML
+        </button>
+        <button
+          data-id="js-editor-playground"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
+        >
+          JS Playground
+        </button>
+        <button
+          data-id="css-editor-playground"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
+        >
+          CSS Playground
+        </button>
+        <button
+          data-id="html-editor-playground"
+          class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
+        >
+          HTML Playground
+        </button>
+      </div>
+      <section
+        class="editor"
+        id="js-editor"
+        style="width: 100%; height: 100%"
+      ></section>
+      <section
+        class="hidden editor"
+        id="css-editor"
+        style="width: 100%; height: 100%"
+      ></section>
+      <section
+        class="hidden editor"
+        id="html-editor"
+        style="width: 100%; height: 100%"
+      ></section>
+      <section
+        class="hidden editor"
+        id="js-editor-playground"
+        style="width: 100%; height: 100%"
+      ></section>
+      <section
+        class="hidden editor"
+        id="css-editor-playground"
+        style="width: 100%; height: 100%"
+      ></section>
+      <section
+        class="hidden editor"
+        id="html-editor-playground"
+        style="width: 100%; height: 100%"
+      ></section>
+      <figure class="text-black">
+        Developed by
+        <a
+          class="text-blue-900 underline cursor-pointer"
+          target="_blank"
+          href="https://kentwynn.com"
+          >Kent Wynn - Software Engineer | UI/UX & Frontend Architect</a
+        >
+      </figure>
+    </div>
+    <!-- Load Custom JavaScript -->
+    <script src="tailwind.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
