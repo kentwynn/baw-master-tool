@@ -1,0 +1,7 @@
+.container {
+  width: 1068px !important;
+  min-height: 1068px;
+}
+.btn-toggle.active {
+  background-color: black !important;
+}
