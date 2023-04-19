@@ -42,7 +42,7 @@ BAW Code Editor allows you to customize the theme and font size of the editor in
 
 # Support
 
-If you encounter any issues with BAW Code Editor or have any questions, please feel free to contact us at support@bawcodeeditor.com. We are happy to help you with any problems or concerns you may have.
+If you encounter any issues with BAW Code Editor or have any questions, please feel free to contact us at kentwynn.media@gmail.com or https://kentwynn.com. We are happy to help you with any problems or concerns you may have.
 
 # License
 
