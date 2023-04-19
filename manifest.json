@@ -28,7 +28,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["page.js"],
       "css": [],
       "all_frames": true,
@@ -37,7 +37,7 @@
   ],
   "web_accessible_resources": [{
     "resources": ["inject.js"],
-    "matches": ["https://*/*"]
+    "matches": ["<all_urls>"]
   }],
   "author": {
     "name": "Kent Wynn"

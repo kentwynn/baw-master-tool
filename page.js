@@ -105,4 +105,4 @@ function injectScript(file_path, tag) {
     node.appendChild(script);
   }
 }
-injectScript(chrome.extension.getURL('inject.js'), 'body');
+injectScript(chrome.runtime.getURL('inject.js'), 'body');
