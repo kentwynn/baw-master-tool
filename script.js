@@ -181,9 +181,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const handleUserMessage = (request, sender, sendResponse) => {
     if (request.type === 'get_CoachViewModel') {
-      const receivedValue = request.value;
+      const receivedValue = request?.value;
       // console.log(receivedValue);
-      if (receivedValue.status === '200') {
+      if (receivedValue?.data && receivedValue.status === '200') {
+        document.getElementById('alert-border').classList.add('hidden');
         const { CoachViewModel } = receivedValue?.data;
         const { inlineScript } = CoachViewModel;
         setValuesToMonaccoEditor(inlineScript);
@@ -193,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('alert-border-text').innerText =
           'Cannot fetch API from BAW Server. Please try again later!';
       }
-    }
+    };
   };
 
   const setValuesToMonaccoEditor = (inlineScript = []) => {
@@ -219,7 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
       currentWindow: true,
     },
     function (tabs) {
-      document.getElementById('alert-border').classList.add('hidden');
+      document.getElementById('alert-border').classList.remove('hidden');
+        document.getElementById('alert-border-text').innerText =
+          'Cannot connect to BAW Server. Please try again later!';
       window.tabId = tabs[0].id;
       chrome.tabs.sendMessage(window.tabId, {
         action: 'get_CoachViewModel',
