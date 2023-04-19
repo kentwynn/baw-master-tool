@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container grid gap-2 h-full bg-gray-50 p-4">
+    <div class="container flex flex-col gap-2 h-full bg-gray-50 p-4">
       <div
         id="alert-border"
         class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
@@ -89,35 +89,20 @@
           HTML Playground
         </button>
       </div>
+      <section class="editor flex-1 w-full" id="js-editor"></section>
+      <section class="editor flex-1 w-full hidden" id="css-editor"></section>
+      <section class="editor flex-1 w-full hidden" id="html-editor"></section>
       <section
-        class="editor"
-        id="js-editor"
-        style="width: 100%; height: 100%"
-      ></section>
-      <section
-        class="hidden editor"
-        id="css-editor"
-        style="width: 100%; height: 100%"
-      ></section>
-      <section
-        class="hidden editor"
-        id="html-editor"
-        style="width: 100%; height: 100%"
-      ></section>
-      <section
-        class="hidden editor"
+        class="editor flex-1 w-full hidden"
         id="js-editor-playground"
-        style="width: 100%; height: 100%"
       ></section>
       <section
-        class="hidden editor"
+        class="editor flex-1 w-full hidden"
         id="css-editor-playground"
-        style="width: 100%; height: 100%"
       ></section>
       <section
-        class="hidden editor"
+        class="editor flex-1 w-full hidden"
         id="html-editor-playground"
-        style="width: 100%; height: 100%"
       ></section>
       <figure class="text-black">
         Developed by
