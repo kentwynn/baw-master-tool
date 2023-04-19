@@ -4,12 +4,18 @@
     <title>BAW Code Editor Tool</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="
+     default-src gap://ready file: blob: *;
+     img-src 'self' data: file: blob: *;
+     style-src 'self' 'unsafe-inline' file: blob: *;
+     worker-src 'self' 'unsafe-inline' file: blob: *;
+     script-src 'self' 'unsafe-inline' 'unsafe-eval' *;">
 
     <!-- Load Monacco -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/vs/loader.min.js"></script>
+    <script src="monaco-editor/0.37.1/min/vs/loader.js"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/vs/editor/editor.main.min.css"
+      href="monaco-editor/0.37.1/min/vs/editor/editor.main.css"
     />
     <!-- Load Custom Style -->
     <link rel="stylesheet" href="style.css" />

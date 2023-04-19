@@ -2,32 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const loadMonaccoEditor = () => {
     require.config({
       paths: {
-        vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs',
+        vs: 'monaco-editor/0.37.1/min/vs',
       },
     });
-
-    window.MonacoEnvironment = {
-      getWorkerUrl: function (workerId, label) {
-        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
-            self.MonacoEnvironment = {
-              baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/'
-            };
-            importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.37.1/min/vs/base/worker/workerMain.js');`)}`;
-      },
-    };
     require(['vs/editor/editor.main'], function () {
-      // validation settings
-      // monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
-      //   noSemanticValidation: false,
-      //   noSyntaxValidation: false,
-      // });
-
-      // compiler options
-      // monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
-      //   target: monaco.languages.typescript.ScriptTarget.ES3,
-      //   allowNonTsExtensions: true,
-      // });
-
       window.jsEditor = monaco.editor.create(
         document.getElementById('js-editor'),
         {
@@ -35,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
           language: 'javascript',
           automaticLayout: true,
           theme: 'vs-dark',
-          CompilerOptionsValue: 'ES3',
         }
       );
       window.cssEditor = monaco.editor.create(
@@ -114,15 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const onMonaccoPlaygroundChangeHandler = (e) => {
     // console.log(e);
     const jsEditorPlaygroundValue = window.jsEditorPlayground.getValue();
-    chrome.storage.local.set({
+    chrome?.storage?.local?.set({
       'js-editor-playground': jsEditorPlaygroundValue,
     });
     const htmlEditorPlaygroundValue = window.htmlEditorPlayground.getValue();
-    chrome.storage.local.set({
+    chrome?.storage?.local?.set({
       'html-editor-playground': htmlEditorPlaygroundValue,
     });
     const cssEditorPlaygroundValue = window.cssEditorPlayground.getValue();
-    chrome.storage.local.set({
+    chrome?.storage?.local?.set({
       'css-editor-playground': cssEditorPlaygroundValue,
     });
   };

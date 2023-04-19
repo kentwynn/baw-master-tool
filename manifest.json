@@ -2,28 +2,44 @@
   "name": "BAW Code Editor Tool",
   "version": "1.0.0",
   "description": "Advanced Code Editor for IBM BAW (Similar to VSCode)",
-  "manifest_version": 2,
-  "author": "Kent Wynn",
-  "browser_action": {
+  "manifest_version": 3,
+  "action": {
     "default_popup": "index.html",
-    "default_title": "BAW Code Editor Tool"
-  },
-  "permissions": ["tabs", "activeTab", "scripting", "storage", "downloads"],
-  "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'",
-  "content_scripts": [
-    {
-      "matches": ["https://*/*"],
-      "run_at": "document_idle",
-      "js": ["page.js"],
-      "css": [],
-      "all_frames": true
+    "default_title": "BAW Code Editor Tool",
+    "default_icon": {
+      "16": "icons/icon128.png"
     }
-  ],
-  "web_accessible_resources": ["inject.js"],
+  },
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["page.js"],
+      "css": [],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["inject.js"],
+    "matches": ["https://*/*"]
+  }],
+  "author": {
+    "name": "Kent Wynn"
   }
 }
