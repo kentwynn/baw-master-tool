@@ -181,11 +181,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const inlineJS = inlineScript.find(
       (item) => item.name === 'Inline Javascript' && item.scriptType === 'JS'
     );
+    const headerHTML = inlineScript.find(
+      (item) => item.name === 'Header HTML' && item.scriptType === 'HTML'
+    );
     inlineJS?.scriptBlock
       ? window?.jsEditor?.getModel()?.setValue(inlineJS?.scriptBlock)
       : null;
     inlineCSS?.scriptBlock
       ? window?.cssEditor?.getModel()?.setValue(inlineCSS?.scriptBlock)
+      : null;
+      headerHTML?.scriptBlock
+      ? window?.htmlEditor?.getModel()?.setValue(headerHTML?.scriptBlock)
       : null;
   };
 
