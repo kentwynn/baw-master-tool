@@ -1,6 +1,6 @@
 {
   "name": "BAW Code Editor Tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced Code Editor for IBM BAW (Similar to VSCode)",
   "manifest_version": 3,
   "action": {
