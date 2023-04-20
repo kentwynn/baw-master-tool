@@ -161,17 +161,40 @@ document.addEventListener('DOMContentLoaded', function () {
       const receivedValue = request?.value;
       // console.log(receivedValue);
       if (receivedValue?.data && receivedValue.status === '200') {
-        document.getElementById('alert-border').classList.add('hidden');
+        enableMonaccoBAW();
         const { CoachViewModel } = receivedValue?.data;
         const { inlineScript } = CoachViewModel;
         setValuesToMonaccoEditor(inlineScript);
         handleMonaccoEditorOnChangeEvent();
       } else {
-        document.getElementById('alert-border').classList.remove('hidden');
-        document.getElementById('alert-border-text').innerText =
-          'Cannot fetch API from BAW Server. Please try again later!';
+        disableMonaccoBAW();
       }
-    };
+    }
+  };
+  const disableMonaccoBAW = () => {
+    const buttonPasteElement = document.getElementById('btn-paste-to-editor');
+    const buttonSaveElement = document.getElementById('btn-save-to-editor');
+    buttonPasteElement.classList.add('opacity-30', 'cursor-not-allowed');
+    buttonSaveElement.classList.add('opacity-30', 'cursor-not-allowed');
+    document.getElementById('alert-border').classList.remove('hidden');
+    document.getElementById('alert-border-text').innerText =
+      'Cannot fetch API from BAW Server. Please try again later!';
+    window.jsEditor?.updateOptions({ readOnly: true });
+    window.cssEditor?.updateOptions({ readOnly: true });
+    window.htmlEditor?.updateOptions({ readOnly: true });
+  };
+
+  const enableMonaccoBAW = () => {
+    const buttonPasteElement = document.getElementById('btn-paste-to-editor');
+    const buttonSaveElement = document.getElementById('btn-save-to-editor');
+    buttonPasteElement.classList.remove('opacity-30', 'cursor-not-allowed');
+    buttonSaveElement.classList.remove('opacity-30', 'cursor-not-allowed');
+    document.getElementById('alert-border').classList.add('hidden');
+    document.getElementById('alert-border-text').innerText =
+      'Cannot fetch API from BAW Server. Please try again later!';
+    window.jsEditor?.updateOptions({ readOnly: false });
+    window.cssEditor?.updateOptions({ readOnly: false });
+    window.htmlEditor?.updateOptions({ readOnly: false });
   };
 
   const setValuesToMonaccoEditor = (inlineScript = []) => {
@@ -190,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
     inlineCSS?.scriptBlock
       ? window?.cssEditor?.getModel()?.setValue(inlineCSS?.scriptBlock)
       : null;
-      headerHTML?.scriptBlock
+    headerHTML?.scriptBlock
       ? window?.htmlEditor?.getModel()?.setValue(headerHTML?.scriptBlock)
       : null;
   };
@@ -203,14 +226,12 @@ document.addEventListener('DOMContentLoaded', function () {
       currentWindow: true,
     },
     function (tabs) {
-      document.getElementById('alert-border').classList.remove('hidden');
-        document.getElementById('alert-border-text').innerText =
-          'Cannot connect to BAW Server. Please try again later!';
       window.tabId = tabs[0].id;
       chrome.tabs.sendMessage(window.tabId, {
         action: 'get_CoachViewModel',
         value: null,
       });
+      disableMonaccoBAW();
     }
   );
 
