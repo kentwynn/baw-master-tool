@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const btnElement = document.querySelector(`[data-id="${id}"]`);
-    const element = document.querySelector('#' + id);
+    const element = document.querySelector('#' + id + '-container');
     btnElement.classList.add('active');
     element.classList.remove('hidden');
   };

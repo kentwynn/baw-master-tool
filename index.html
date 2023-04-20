@@ -4,12 +4,15 @@
     <title>BAW Code Editor Tool</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
      default-src gap://ready file: blob: *;
      img-src 'self' data: file: blob: *;
      style-src 'self' 'unsafe-inline' file: blob: *;
      worker-src 'self' 'unsafe-inline' file: blob: *;
-     script-src 'self' 'unsafe-inline' 'unsafe-eval' *;">
+     script-src 'self' 'unsafe-inline' 'unsafe-eval' *;"
+    />
 
     <!-- Load Monacco -->
     <script src="monaco-editor/0.37.1/min/vs/loader.js"></script>
@@ -95,21 +98,33 @@
           HTML Playground
         </button>
       </div>
-      <section class="editor flex-1 w-full" id="js-editor"></section>
-      <section class="editor flex-1 w-full hidden" id="css-editor"></section>
-      <section class="editor flex-1 w-full hidden" id="html-editor"></section>
+      <section class="editor flex-1 w-full grid" id="js-editor-container">
+        <div id="js-editor" class="h-full w-full"></div>
+      </section>
+      <section class="editor flex-1 w-full grid hidden" id="css-editor-container">
+        <div id="css-editor" class="h-full w-full"></div>
+      </section>
+      <section class="editor flex-1 w-full grid hidden" id="html-editor-container">
+        <div id="html-editor" class="h-full w-full"></div>
+      </section>
       <section
-        class="editor flex-1 w-full hidden"
-        id="js-editor-playground"
-      ></section>
+        class="editor flex-1 w-full grid hidden"
+        id="js-editor-playground-container"
+      >
+        <div id="js-editor-playground" class="h-full w-full"></div>
+      </section>
       <section
-        class="editor flex-1 w-full hidden"
-        id="css-editor-playground"
-      ></section>
+        class="editor flex-1 w-full grid hidden"
+        id="css-editor-playground-container"
+      >
+        <div id="css-editor-playground" class="h-full w-full"></div>
+      </section>
       <section
-        class="editor flex-1 w-full hidden"
-        id="html-editor-playground"
-      ></section>
+        class="editor flex-1 w-full grid hidden"
+        id="html-editor-playground-container"
+      >
+        <div id="html-editor-playground" class="h-full w-full"></div>
+      </section>
       <figure class="text-black">
         Developed by
         <a
