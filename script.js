@@ -33,6 +33,51 @@ document.addEventListener('DOMContentLoaded', function () {
           theme: 'vs-dark',
         }
       );
+      window.loadJsEditor = monaco.editor.create(
+        document.getElementById('load-js-editor'),
+        {
+          value: '',
+          language: 'javascript',
+          automaticLayout: true,
+          theme: 'vs-dark',
+        }
+      );
+      window.unloadJsEditor = monaco.editor.create(
+        document.getElementById('unload-js-editor'),
+        {
+          value: '',
+          language: 'javascript',
+          automaticLayout: true,
+          theme: 'vs-dark',
+        }
+      );
+      window.viewJsEditor = monaco.editor.create(
+        document.getElementById('view-js-editor'),
+        {
+          value: '',
+          language: 'javascript',
+          automaticLayout: true,
+          theme: 'vs-dark',
+        }
+      );
+      window.changeJsEditor = monaco.editor.create(
+        document.getElementById('change-js-editor'),
+        {
+          value: '',
+          language: 'javascript',
+          automaticLayout: true,
+          theme: 'vs-dark',
+        }
+      );
+      window.validateJsEditor = monaco.editor.create(
+        document.getElementById('validate-js-editor'),
+        {
+          value: '',
+          language: 'javascript',
+          automaticLayout: true,
+          theme: 'vs-dark',
+        }
+      );
       window.jsEditorPlayground = monaco.editor.create(
         document.getElementById('js-editor-playground'),
         {
@@ -84,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
       window.cssEditorPlayground
         .getModel()
         .onDidChangeContent(onMonaccoPlaygroundChangeHandler);
+      disableMonaccoBAW();
     });
   };
   loadMonaccoEditor();
@@ -119,6 +165,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window?.jsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
     window?.cssEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
     window?.htmlEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.loadJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.unloadJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.viewJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.changeJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.validateJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
   };
 
   const onMonaccoChangeHander = (e) => {
@@ -127,6 +178,11 @@ document.addEventListener('DOMContentLoaded', function () {
       let error = window.jsEditor._domElement.querySelector('.squiggly-error');
       error += window.cssEditor._domElement.querySelector('.squiggly-error');
       error += window.htmlEditor._domElement.querySelector('.squiggly-error');
+      error += window.loadJsEditor._domElement.querySelector('.squiggly-error');
+      error += window.unloadJsEditor._domElement.querySelector('.squiggly-error');
+      error += window.viewJsEditor._domElement.querySelector('.squiggly-error');
+      error += window.changeJsEditor._domElement.querySelector('.squiggly-error');
+      error += window.validateJsEditor._domElement.querySelector('.squiggly-error');
       const buttonPasteElement = document.getElementById('btn-paste-to-editor');
       const buttonSaveElement = document.getElementById('btn-save-to-editor');
       if (error) {
@@ -163,8 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (receivedValue?.data && receivedValue.status === '200') {
         enableMonaccoBAW();
         const { CoachViewModel } = receivedValue?.data;
-        const { inlineScript } = CoachViewModel;
+        const { inlineScript, header } = CoachViewModel;
         setValuesToMonaccoEditor(inlineScript);
+        setValuesOfEventHandlersToMonaccoEditor(header);
         handleMonaccoEditorOnChangeEvent();
       } else {
         disableMonaccoBAW();
@@ -182,7 +239,16 @@ document.addEventListener('DOMContentLoaded', function () {
     window.jsEditor?.updateOptions({ readOnly: true });
     window.cssEditor?.updateOptions({ readOnly: true });
     window.htmlEditor?.updateOptions({ readOnly: true });
+    disableMonaccoBAWEventHandlers();
   };
+
+  const disableMonaccoBAWEventHandlers = ()=> {
+    window.loadJsEditor?.updateOptions({ readOnly: true });
+    window.unloadJsEditor?.updateOptions({ readOnly: true });
+    window.viewJsEditor?.updateOptions({ readOnly: true });
+    window.changeJsEditor?.updateOptions({ readOnly: true });
+    window.validateJsEditor?.updateOptions({ readOnly: true });
+  }
 
   const enableMonaccoBAW = () => {
     const buttonPasteElement = document.getElementById('btn-paste-to-editor');
@@ -218,6 +284,14 @@ document.addEventListener('DOMContentLoaded', function () {
       : null;
   };
 
+  const setValuesOfEventHandlersToMonaccoEditor = (header) => {
+    if(header['loadJSFunction']) window?.loadJsEditor?.getModel()?.setValue(header['loadJSFunction']);
+    if(header['unloadJSFunction']) window?.unloadJsEditor?.getModel()?.setValue(header['unloadJSFunction']);
+    if(header['viewJSFunction']) window?.viewJsEditor?.getModel()?.setValue(header['viewJSFunction']);
+    if(header['changeJSFunction']) window?.changeJsEditor?.getModel()?.setValue(header['changeJSFunction']);
+    if(header['validateJSFunction']) window?.validateJsEditor?.getModel()?.setValue(header['validateJSFunction']);
+  }
+
   chrome.runtime.onMessage.addListener(handleUserMessage);
 
   chrome.tabs.query(
@@ -231,7 +305,6 @@ document.addEventListener('DOMContentLoaded', function () {
         action: 'get_CoachViewModel',
         value: null,
       });
-      disableMonaccoBAW();
     }
   );
 
@@ -258,10 +331,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const js = window.jsEditor.getValue();
     const css = window.cssEditor.getValue();
     const html = window.htmlEditor.getValue();
+    const loadJsEditor = window.loadJsEditor.getValue();
+    const unloadJsEditor = window.unloadJsEditor.getValue();
+    const viewJsEditor = window.viewJsEditor.getValue();
+    const changeJsEditor = window.changeJsEditor.getValue();
+    const validateJsEditor = window.validateJsEditor.getValue();
     return {
       js,
       css,
       html,
+      loadJsEditor,
+      unloadJsEditor,
+      viewJsEditor,
+      changeJsEditor,
+      validateJsEditor
     };
   };
 });

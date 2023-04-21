@@ -5,3 +5,6 @@
 .btn-toggle.active {
   background-color: black !important;
 }
+#event-handlers-container {
+  height: 468px;;
+}
