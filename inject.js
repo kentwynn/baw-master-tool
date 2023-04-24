@@ -24,7 +24,7 @@ const pasteCodeEditorToBAW = (data) => {
     `[data-test-attr="inlineJavaScript.jseditor"]`
   );
   const jsID = jsElement.id;
-  
+
   const cssElement = document.querySelector(
     `[data-test-attr="inlineCSS.jseditor"]`
   );
@@ -59,22 +59,18 @@ const pasteCodeEditorToBAW = (data) => {
     `[data-test-attr="eventHandlersValidate.jseditor"]`
   );
   const validateJsID = validateJsElement.id;
-  dijit.byId(jsID).setValue(js);
-  dijit.byId(jsID).onChange();
-  dijit.byId(cssID).setValue(css);
-  dijit.byId(cssID).onChange();
-  dijit.byId(htmlID).setValue(html);
-  dijit.byId(htmlID).onChange();
-  // dijit.byId(loadJsID).setValue(loadJsEditor);
-  // dijit.byId(loadJsID).onChange();
-  // dijit.byId(unloadJsID).setValue(unloadJsEditor);
-  // dijit.byId(unloadJsID).onChange();
-//   dijit.byId(viewJsID).setValue(viewJsEditor);
-//   dijit.byId(viewJsID).onChange();
-//   dijit.byId(changeJsID).setValue(changeJsEditor);
-//   dijit.byId(changeJsID).onChange();
-//   dijit.byId(validateJsID).setValue(validateJsEditor);
-//   dijit.byId(validateJsID).onChange();
+  const queue = [];
+  queue.push(queueOnFunction(jsID, js));
+  queue.push(queueOnFunction(cssID, css));
+  queue.push(queueOnFunction(htmlID, html));
+  // queue.push(queueOnFunction(loadJsID, loadJsEditor));
+  // queue.push(queueOnFunction(unloadJsID, unloadJsEditor));
+  // queue.push(queueOnFunction(viewJsID, viewJsEditor));
+  // queue.push(queueOnFunction(changeJsID, changeJsEditor));
+  // queue.push(queueOnFunction(validateJsID, validateJsEditor));
+  while (queue.length > 0) {
+    queue.shift()();
+  }
 };
 
 const saveCodeEditorToBAW = (data) => {
@@ -92,7 +88,7 @@ const saveCodeEditorToBAW = (data) => {
     `[data-test-attr="inlineJavaScript.jseditor"]`
   );
   const jsID = jsElement.id;
-  
+
   const cssElement = document.querySelector(
     `[data-test-attr="inlineCSS.jseditor"]`
   );
@@ -127,37 +123,22 @@ const saveCodeEditorToBAW = (data) => {
     `[data-test-attr="eventHandlersValidate.jseditor"]`
   );
   const validateJsID = validateJsElement.id;
+  const queue = [];
+  queue.push(queueOnFunction(jsID, js, true));
+  queue.push(queueOnFunction(cssID, css, true));
+  queue.push(queueOnFunction(htmlID, html, true));
+  // queue.push(queueOnFunction(loadJsID, loadJsEditor, true));
+  // queue.push(queueOnFunction(unloadJsID, unloadJsEditor, true));
+  // queue.push(queueOnFunction(viewJsID, viewJsEditor, true));
+  // queue.push(queueOnFunction(changeJsID, changeJsEditor, true));
+  // queue.push(queueOnFunction(validateJsID, validateJsEditor, true));
+  while (queue.length > 0) {
+    queue.shift()();
+  }
+};
 
-  dijit.byId(jsID).setValue(js);
-  dijit.byId(jsID).onChange();
-  dijit.byId(jsID).saveAction();
-
-  dijit.byId(cssID).setValue(css);
-  dijit.byId(cssID).onChange();
-  dijit.byId(cssID).saveAction();
-
-  dijit.byId(htmlID).setValue(html);
-  dijit.byId(htmlID).onChange();
-  dijit.byId(htmlID).saveAction();
-
-  // dijit.byId(loadJsID).setValue(loadJsEditor);
-  // dijit.byId(loadJsID).onChange();
-  // dijit.byId(loadJsID).saveAction();
-
-  // dijit.byId(unloadJsID).setValue(unloadJsEditor);
-  // dijit.byId(unloadJsID).onChange();
-  // dijit.byId(unloadJsID).saveAction();
-
-  // dijit.byId(viewJsID).setValue(viewJsEditor);
-  // dijit.byId(viewJsID).onChange();
-  // dijit.byId(viewJsID).saveAction();
-
-  // dijit.byId(changeJsID).setValue(changeJsEditor);
-  // dijit.byId(changeJsID).onChange();
-  // dijit.byId(changeJsID).saveAction();
-
-  // dijit.byId(validateJsID).setValue(validateJsEditor);
-  // dijit.byId(validateJsID).onChange();
-  // dijit.byId(validateJsID).saveAction();
-
+const queueOnFunction = (id, value, isSaveAction = false) => {
+  dijit.byId(id).setValue(value);
+  dijit.byId(id).onChange();
+  if (isSaveAction) dijit.byId(id).saveAction();
 };
