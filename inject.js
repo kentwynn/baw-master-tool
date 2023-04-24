@@ -9,7 +9,6 @@ save_EditorToBAW.onmessage = function (event) {
 };
 
 const pasteCodeEditorToBAW = (data) => {
-  debugger;
   const {
     js,
     css,
@@ -69,7 +68,7 @@ const pasteCodeEditorToBAW = (data) => {
   // queue.push(queueOnFunction(changeJsID, changeJsEditor));
   // queue.push(queueOnFunction(validateJsID, validateJsEditor));
   while (queue.length > 0) {
-    queue.shift()();
+    queue.shift();
   }
 };
 
@@ -133,7 +132,7 @@ const saveCodeEditorToBAW = (data) => {
   // queue.push(queueOnFunction(changeJsID, changeJsEditor, true));
   // queue.push(queueOnFunction(validateJsID, validateJsEditor, true));
   while (queue.length > 0) {
-    queue.shift()();
+    queue.shift();
   }
 };
 
