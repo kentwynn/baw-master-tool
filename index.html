@@ -20,6 +20,11 @@
       rel="stylesheet"
       href="monaco-editor/0.37.1/min/vs/editor/editor.main.css"
     />
+    <!-- Load TailwindCss -->
+    <script src="tailwind.js"></script>
+    <!-- Load XML JSON -->
+    <script src="xml-json/json2xml.js"></script>
+    <script src="xml-json/xml2json.js"></script>
     <!-- Load Custom Style -->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -105,10 +110,10 @@
           HTML Playground
         </button>
         <button
-          data-id="html-editor-playground"
+          data-id="get-user-info"
           class="bg-gray-500 text-white rounded font-light text-xs p-2 btn-toggle hover:bg-gray-900"
         >
-          HTML Playground
+          Get User Info
         </button>
       </div>
       <section class="editor flex-1 w-full grid gap-1" id="js-editor-container">
@@ -246,6 +251,31 @@
       >
         <div id="html-editor-playground" class="h-full w-full"></div>
       </section>
+      <section
+        class="editor flex-1 w-full grid gap-1 hidden"
+        id="get-user-info-container"
+      >
+        <div class="flex flex-col gap-1">
+          <div class="flex gap-2 bg-gray-300 p-4 rounded w-full">
+            <input
+              type="text"
+              placeholder="Enter User Name"
+              id="username-input"
+              autofocus
+              class="h-6 px-4 border-gray-700 border-2 border-solid focus:border-gray-900 rounded"
+            />
+            <button
+              id="btn-get-user"
+              class="h-6 px-4 bg-gray-700 hover:bg-gray-900 rounded text-white"
+            >
+              Get User
+            </button>
+          </div>
+          <section class="grid w-full h-full">
+            <div id="json-editor-user" class="h-full w-full"></div>
+          </section>
+        </div>
+      </section>
       <figure class="text-black">
         Developed by
         <a
@@ -257,7 +287,6 @@
       </figure>
     </div>
     <!-- Load Custom JavaScript -->
-    <script src="tailwind.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -105,6 +105,16 @@ document.addEventListener('DOMContentLoaded', function () {
           theme: 'vs-dark',
         }
       );
+      window.jsonEditorUser = monaco.editor.create(
+        document.getElementById('json-editor-user'),
+        {
+          value: '',
+          language: 'json',
+          automaticLayout: true,
+          theme: 'vs-dark',
+          readOnly: true,
+        }
+      );
       chrome.storage.local.get('js-editor-playground', function (result) {
         window.jsEditorPlayground
           .getModel()
@@ -166,10 +176,16 @@ document.addEventListener('DOMContentLoaded', function () {
     window?.cssEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
     window?.htmlEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
     window?.loadJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
-    window?.unloadJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.unloadJsEditor
+      ?.getModel()
+      .onDidChangeContent(onMonaccoChangeHander);
     window?.viewJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
-    window?.changeJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
-    window?.validateJsEditor?.getModel().onDidChangeContent(onMonaccoChangeHander);
+    window?.changeJsEditor
+      ?.getModel()
+      .onDidChangeContent(onMonaccoChangeHander);
+    window?.validateJsEditor
+      ?.getModel()
+      .onDidChangeContent(onMonaccoChangeHander);
   };
 
   const onMonaccoChangeHander = (e) => {
@@ -179,10 +195,13 @@ document.addEventListener('DOMContentLoaded', function () {
       error += window.cssEditor._domElement.querySelector('.squiggly-error');
       error += window.htmlEditor._domElement.querySelector('.squiggly-error');
       error += window.loadJsEditor._domElement.querySelector('.squiggly-error');
-      error += window.unloadJsEditor._domElement.querySelector('.squiggly-error');
+      error +=
+        window.unloadJsEditor._domElement.querySelector('.squiggly-error');
       error += window.viewJsEditor._domElement.querySelector('.squiggly-error');
-      error += window.changeJsEditor._domElement.querySelector('.squiggly-error');
-      error += window.validateJsEditor._domElement.querySelector('.squiggly-error');
+      error +=
+        window.changeJsEditor._domElement.querySelector('.squiggly-error');
+      error +=
+        window.validateJsEditor._domElement.querySelector('.squiggly-error');
       const buttonPasteElement = document.getElementById('btn-paste-to-editor');
       const buttonSaveElement = document.getElementById('btn-save-to-editor');
       if (error) {
@@ -227,7 +246,14 @@ document.addEventListener('DOMContentLoaded', function () {
         disableMonaccoBAW();
       }
     }
+    if (request.type === 'get_UserInfo') {
+      const receivedValue = request?.value;
+      // console.log(receivedValue);
+      // const json = xml2json(receivedValue, { spaces: 10 });
+      // window.jsonEditorUser.getModel().setValue(json?.toString());
+    }
   };
+
   const disableMonaccoBAW = () => {
     const buttonPasteElement = document.getElementById('btn-paste-to-editor');
     const buttonSaveElement = document.getElementById('btn-save-to-editor');
@@ -239,24 +265,30 @@ document.addEventListener('DOMContentLoaded', function () {
     window.jsEditor?.updateOptions({ readOnly: true });
     window.cssEditor?.updateOptions({ readOnly: true });
     window.htmlEditor?.updateOptions({ readOnly: true });
-    document.getElementById("js-editor-action").classList.remove("hidden");
-    document.getElementById("css-editor-action").classList.remove("hidden");
-    document.getElementById("html-editor-action").classList.remove("hidden");
+    document.getElementById('js-editor-action').classList.remove('hidden');
+    document.getElementById('css-editor-action').classList.remove('hidden');
+    document.getElementById('html-editor-action').classList.remove('hidden');
     disableMonaccoBAWEventHandlers();
   };
 
-  const disableMonaccoBAWEventHandlers = ()=> {
+  const disableMonaccoBAWEventHandlers = () => {
     window.loadJsEditor?.updateOptions({ readOnly: true });
     window.unloadJsEditor?.updateOptions({ readOnly: true });
     window.viewJsEditor?.updateOptions({ readOnly: true });
     window.changeJsEditor?.updateOptions({ readOnly: true });
     window.validateJsEditor?.updateOptions({ readOnly: true });
-    document.getElementById("load-js-editor-action").classList.remove("hidden");
-    document.getElementById("unload-js-editor-action").classList.remove("hidden");
-    document.getElementById("view-js-editor-action").classList.remove("hidden");
-    document.getElementById("change-js-editor-action").classList.remove("hidden");
-    document.getElementById("validate-js-editor-action").classList.remove("hidden");
-  }
+    document.getElementById('load-js-editor-action').classList.remove('hidden');
+    document
+      .getElementById('unload-js-editor-action')
+      .classList.remove('hidden');
+    document.getElementById('view-js-editor-action').classList.remove('hidden');
+    document
+      .getElementById('change-js-editor-action')
+      .classList.remove('hidden');
+    document
+      .getElementById('validate-js-editor-action')
+      .classList.remove('hidden');
+  };
 
   const enableMonaccoBAW = () => {
     const buttonPasteElement = document.getElementById('btn-paste-to-editor');
@@ -269,24 +301,26 @@ document.addEventListener('DOMContentLoaded', function () {
     window.jsEditor?.updateOptions({ readOnly: false });
     window.cssEditor?.updateOptions({ readOnly: false });
     window.htmlEditor?.updateOptions({ readOnly: false });
-    document.getElementById("js-editor-action").classList.add("hidden");
-    document.getElementById("css-editor-action").classList.add("hidden");
-    document.getElementById("html-editor-action").classList.add("hidden");
+    document.getElementById('js-editor-action').classList.add('hidden');
+    document.getElementById('css-editor-action').classList.add('hidden');
+    document.getElementById('html-editor-action').classList.add('hidden');
     // enableMonaccoBAWEventHandlers();
   };
 
-  const enableMonaccoBAWEventHandlers = ()=> {
+  const enableMonaccoBAWEventHandlers = () => {
     window.loadJsEditor?.updateOptions({ readOnly: false });
     window.unloadJsEditor?.updateOptions({ readOnly: false });
     window.viewJsEditor?.updateOptions({ readOnly: false });
     window.changeJsEditor?.updateOptions({ readOnly: false });
     window.validateJsEditor?.updateOptions({ readOnly: false });
-    document.getElementById("load-js-editor-action").classList.add("hidden");
-    document.getElementById("unload-js-editor-action").classList.add("hidden");
-    document.getElementById("view-js-editor-action").classList.add("hidden");
-    document.getElementById("change-js-editor-action").classList.add("hidden");
-    document.getElementById("validate-js-editor-action").classList.add("hidden");
-  }
+    document.getElementById('load-js-editor-action').classList.add('hidden');
+    document.getElementById('unload-js-editor-action').classList.add('hidden');
+    document.getElementById('view-js-editor-action').classList.add('hidden');
+    document.getElementById('change-js-editor-action').classList.add('hidden');
+    document
+      .getElementById('validate-js-editor-action')
+      .classList.add('hidden');
+  };
 
   const setValuesToMonaccoEditor = (inlineScript = []) => {
     const inlineCSS = inlineScript.find(
@@ -310,15 +344,21 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const setValuesOfEventHandlersToMonaccoEditor = (header) => {
-    if(header['loadJSFunction']) window?.loadJsEditor?.getModel()?.setValue(header['loadJSFunction']);
-    if(header['unloadJSFunction']) window?.unloadJsEditor?.getModel()?.setValue(header['unloadJSFunction']);
-    if(header['viewJSFunction']) window?.viewJsEditor?.getModel()?.setValue(header['viewJSFunction']);
-    if(header['changeJSFunction']) window?.changeJsEditor?.getModel()?.setValue(header['changeJSFunction']);
-    if(header['validateJSFunction']) window?.validateJsEditor?.getModel()?.setValue(header['validateJSFunction']);
-  }
+    if (header['loadJSFunction'])
+      window?.loadJsEditor?.getModel()?.setValue(header['loadJSFunction']);
+    if (header['unloadJSFunction'])
+      window?.unloadJsEditor?.getModel()?.setValue(header['unloadJSFunction']);
+    if (header['viewJSFunction'])
+      window?.viewJsEditor?.getModel()?.setValue(header['viewJSFunction']);
+    if (header['changeJSFunction'])
+      window?.changeJsEditor?.getModel()?.setValue(header['changeJSFunction']);
+    if (header['validateJSFunction'])
+      window?.validateJsEditor
+        ?.getModel()
+        ?.setValue(header['validateJSFunction']);
+  };
 
   chrome.runtime.onMessage.addListener(handleUserMessage);
-
   chrome.tabs.query(
     {
       active: true,
@@ -369,7 +409,22 @@ document.addEventListener('DOMContentLoaded', function () {
       unloadJsEditor,
       viewJsEditor,
       changeJsEditor,
-      validateJsEditor
+      validateJsEditor,
     };
   };
+
+  const onGetUserInfoHandler = () => {
+    const btnGetUser = document.getElementById('btn-get-user');
+    const inputUserName = document.getElementById('username-input');
+    btnGetUser.addEventListener('click', (e) => {
+      const inputValue = inputUserName.value;
+      if (inputValue) {
+        chrome.tabs.sendMessage(window.tabId, {
+          action: 'get_UserInfo',
+          value: inputValue,
+        });
+      }
+    });
+  };
+  onGetUserInfoHandler();
 });
