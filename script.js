@@ -248,6 +248,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (request.type === 'get_UserInfo') {
       const receivedValue = request?.value;
+      const xmlElement = new DOMParser().parseFromString(
+        receivedValue,
+        'text/xml'
+      );
+      console.log(xmlElement);
+      // const xmlContainer = document.getElementById('json-editor-user');
+      // xmlContainer.innerHTML = '';
+      // xmlContainer.appendChild(xmlElement);
       // console.log(receivedValue);
       // const json = xml2json(receivedValue, { spaces: 10 });
       // window.jsonEditorUser.getModel().setValue(json?.toString());
