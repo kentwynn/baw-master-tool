@@ -252,13 +252,51 @@ document.addEventListener('DOMContentLoaded', function () {
         receivedValue,
         'text/xml'
       );
-      console.log(xmlElement);
-      // const xmlContainer = document.getElementById('json-editor-user');
-      // xmlContainer.innerHTML = '';
-      // xmlContainer.appendChild(xmlElement);
-      // console.log(receivedValue);
-      // const json = xml2json(receivedValue, { spaces: 10 });
-      // window.jsonEditorUser.getModel().setValue(json?.toString());
+      const userID = xmlElement.querySelector('userID')?.textContent;
+      const userName = xmlElement.querySelector('userName')?.textContent;
+      const fullName = xmlElement.querySelector('fullName')?.textContent;
+      const isDisabled = xmlElement.querySelector('isDisabled')?.textContent;
+      const emailAddress =
+        xmlElement.querySelector('emailAddress')?.textContent;
+      document.getElementById('userid-td').innerText = userID;
+      document.getElementById('username-td').innerText = userName;
+      document.getElementById('fullname-td').innerText = fullName;
+      document.getElementById('emailaddress-td').innerText = emailAddress;
+      switch (isDisabled) {
+        case 'false':
+          document
+            .getElementById('userstatus-enable-td')
+            .classList.remove('hidden');
+          document
+            .getElementById('userstatus-disable-td')
+            .classList.add('hidden');
+          document
+            .getElementById('userstatus-undefine-td')
+            .classList.add('hidden');
+          break;
+        case 'true':
+          document
+            .getElementById('userstatus-enable-td')
+            .classList.add('hidden');
+          document
+            .getElementById('userstatus-disable-td')
+            .classList.remove('hidden');
+          document
+            .getElementById('userstatus-undefine-td')
+            .classList.add('hidden');
+          break;
+        default:
+          document
+            .getElementById('userstatus-enable-td')
+            .classList.add('hidden');
+          document
+            .getElementById('userstatus-disable-td')
+            .classList.add('hidden');
+          document
+            .getElementById('userstatus-undefine-td')
+            .classList.remove('hidden');
+          break;
+      }
     }
   };
 

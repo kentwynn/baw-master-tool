@@ -271,8 +271,53 @@
               Get User
             </button>
           </div>
-          <section class="grid w-full h-full" id="json-editor-user">
-            <!-- <div id="json-editor-user" class="h-full w-full"></div> -->
+          <section class="grid w-full h-full bg-gray-100 p-4">
+            <table class="table-auto">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>USER ID</td>
+                  <td id="userid-td">Undefined</td>
+                </tr>
+                <tr>
+                  <td>USER NAME</td>
+                  <td id="username-td">Undefined</td>
+                </tr>
+                <tr>
+                  <td>FULL NAME</td>
+                  <td id="fullname-td">Undefined</td>
+                </tr>
+                <tr>
+                  <td>USER STATUS</td>
+                  <td>
+                    <span
+                      id="userstatus-enable-td"
+                      class="hidden bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300"
+                      >Enabled</span
+                    >
+                    <span
+                      id="userstatus-undefine-td"
+                      class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300"
+                      >Undefined</span
+                    >
+                    <span
+                      id="userstatus-disable-td"
+                      class="hidden bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                      >Disabled</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>EMAIL ADDRESS</td>
+                  <td id="emailaddress-td">Undefined</td>
+                </tr>
+              </tbody>
+            </table>
           </section>
         </div>
       </section>
