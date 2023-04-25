@@ -16,11 +16,11 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid rgb(55 65 81 / var(--tw-bg-opacity));
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
