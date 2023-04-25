@@ -23,6 +23,7 @@
     <!-- Load Custom Style -->
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="container flex flex-col gap-2 h-full bg-gray-50 p-4">
       <div
@@ -104,54 +105,122 @@
           HTML Playground
         </button>
       </div>
-      <section class="editor flex-1 w-full grid" id="js-editor-container">
+      <section class="editor flex-1 w-full grid gap-1" id="js-editor-container">
+        <div class="flex gap-1" id="js-editor-action">
+          <span
+            class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+            >Readonly</span
+          >
+        </div>
         <div id="js-editor" class="h-full w-full"></div>
       </section>
-      <section class="editor flex-1 w-full grid hidden" id="css-editor-container">
+      <section
+        class="editor flex-1 w-full grid gap-1 hidden"
+        id="css-editor-container"
+      >
+        <div class="flex gap-1" id="css-editor-action">
+          <span
+            class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+            >Readonly</span
+          >
+        </div>
         <div id="css-editor" class="h-full w-full"></div>
       </section>
-      <section class="editor flex-1 w-full grid hidden" id="html-editor-container">
+      <section
+        class="editor flex-1 w-full grid gap-1 hidden"
+        id="html-editor-container"
+      >
+        <div class="flex gap-1" id="html-editor-action">
+          <span
+            class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+            >Readonly</span
+          >
+        </div>
         <div id="html-editor" class="h-full w-full"></div>
       </section>
-      <section class="editor w-full hidden overflow-auto h-full" id="event-handlers-container">
+      <section
+        class="editor w-full hidden overflow-auto h-full"
+        id="event-handlers-container"
+      >
         <div class="flex flex-col gap-4">
           <div class="grid gap-1">
-            <div class="flex gap-1">
-              <span>Load</span>
-              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Readonly</span>
+            <div class="flex">
+              <span
+                class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                >Load</span
+              >
+              <div class="flex gap-1" id="load-js-editor-action">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >Readonly</span
+                >
+              </div>
             </div>
             <div id="load-js-editor" class="h-72 w-full"></div>
           </div>
           <div class="grid gap-1">
-            <div class="flex gap-1">
-              <span>Unload</span>
-              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Readonly</span>
+            <div class="flex">
+              <span
+                class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                >Unload</span
+              >
+              <div class="flex gap-1" id="unload-js-editor-action">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >Readonly</span
+                >
+              </div>
             </div>
             <div id="unload-js-editor" class="h-72 w-full"></div>
           </div>
           <div class="grid gap-1">
-            <div class="flex gap-1">
-              <span>View</span>
-              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Readonly</span>
+            <div class="flex">
+              <span
+                class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                >View</span
+              >
+
+              <div class="flex gap-1" id="view-js-editor-action">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >Readonly</span
+                >
+              </div>
             </div>
             <div id="view-js-editor" class="h-72 w-full"></div>
           </div>
           <div class="grid gap-1">
-            <div class="flex gap-1">
-              <span>Change</span>
-              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Readonly</span>
+            <div class="flex">
+              <span
+                class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                >Change</span
+              >
+
+              <div class="flex gap-1" id="change-js-editor-action">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >Readonly</span
+                >
+              </div>
             </div>
             <div id="change-js-editor" class="h-72 w-full"></div>
           </div>
           <div class="grid gap-1">
-            <div class="flex gap-1">
-              <span>Validate</span>
-              <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Readonly</span>
+            <div class="flex">
+              <span
+                class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                >Validate</span
+              >
+              <div class="flex gap-1" id="validate-js-editor-action">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >Readonly</span
+                >
+              </div>
             </div>
             <div id="validate-js-editor" class="h-72 w-full"></div>
           </div>
         </div>
- 
       </section>
       <section
         class="editor flex-1 w-full grid hidden"

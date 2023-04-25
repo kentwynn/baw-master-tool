@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.jsEditor?.updateOptions({ readOnly: true });
     window.cssEditor?.updateOptions({ readOnly: true });
     window.htmlEditor?.updateOptions({ readOnly: true });
+    document.getElementById("js-editor-action").classList.remove("hidden");
+    document.getElementById("css-editor-action").classList.remove("hidden");
+    document.getElementById("html-editor-action").classList.remove("hidden");
     disableMonaccoBAWEventHandlers();
   };
 
@@ -248,6 +251,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.viewJsEditor?.updateOptions({ readOnly: true });
     window.changeJsEditor?.updateOptions({ readOnly: true });
     window.validateJsEditor?.updateOptions({ readOnly: true });
+    document.getElementById("load-js-editor-action").classList.remove("hidden");
+    document.getElementById("unload-js-editor-action").classList.remove("hidden");
+    document.getElementById("view-js-editor-action").classList.remove("hidden");
+    document.getElementById("change-js-editor-action").classList.remove("hidden");
+    document.getElementById("validate-js-editor-action").classList.remove("hidden");
   }
 
   const enableMonaccoBAW = () => {
@@ -261,7 +269,24 @@ document.addEventListener('DOMContentLoaded', function () {
     window.jsEditor?.updateOptions({ readOnly: false });
     window.cssEditor?.updateOptions({ readOnly: false });
     window.htmlEditor?.updateOptions({ readOnly: false });
+    document.getElementById("js-editor-action").classList.add("hidden");
+    document.getElementById("css-editor-action").classList.add("hidden");
+    document.getElementById("html-editor-action").classList.add("hidden");
+    // enableMonaccoBAWEventHandlers();
   };
+
+  const enableMonaccoBAWEventHandlers = ()=> {
+    window.loadJsEditor?.updateOptions({ readOnly: false });
+    window.unloadJsEditor?.updateOptions({ readOnly: false });
+    window.viewJsEditor?.updateOptions({ readOnly: false });
+    window.changeJsEditor?.updateOptions({ readOnly: false });
+    window.validateJsEditor?.updateOptions({ readOnly: false });
+    document.getElementById("load-js-editor-action").classList.add("hidden");
+    document.getElementById("unload-js-editor-action").classList.add("hidden");
+    document.getElementById("view-js-editor-action").classList.add("hidden");
+    document.getElementById("change-js-editor-action").classList.add("hidden");
+    document.getElementById("validate-js-editor-action").classList.add("hidden");
+  }
 
   const setValuesToMonaccoEditor = (inlineScript = []) => {
     const inlineCSS = inlineScript.find(
