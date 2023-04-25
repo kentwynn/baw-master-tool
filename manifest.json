@@ -1,6 +1,6 @@
 {
   "name": "BAW Master Tool",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Advanced BAW Master Tool with VSCode Editor and more",
   "manifest_version": 3,
   "action": {
