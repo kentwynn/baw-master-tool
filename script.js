@@ -105,16 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
           theme: 'vs-dark',
         }
       );
-      window.jsonEditorUser = monaco.editor.create(
-        document.getElementById('json-editor-user'),
-        {
-          value: '',
-          language: 'json',
-          automaticLayout: true,
-          theme: 'vs-dark',
-          readOnly: true,
-        }
-      );
       chrome.storage.local.get('js-editor-playground', function (result) {
         window.jsEditorPlayground
           .getModel()

@@ -16,7 +16,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["tabs", "activeTab", "storage"],
+  "permissions": ["activeTab", "storage"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
