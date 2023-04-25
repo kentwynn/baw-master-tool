@@ -1,11 +1,11 @@
 {
-  "name": "BAW Code Editor Tool",
+  "name": "BAW Master Tool",
   "version": "1.0.2",
-  "description": "Advanced Code Editor for IBM BAW (Similar to VSCode)",
+  "description": "Advanced BAW Master Tool with VSCode Editor and more",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
-    "default_title": "BAW Code Editor Tool",
+    "default_title": "BAW Master Tool",
     "default_icon": {
       "16": "icons/icon128.png"
     }
@@ -16,11 +16,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": [
-    "tabs",
-    "activeTab",
-    "storage"
-  ],
+  "permissions": ["tabs", "activeTab", "storage"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
@@ -33,10 +29,12 @@
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": [{
-    "resources": ["inject.js"],
-    "matches": ["<all_urls>"]
-  }],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "author": {
     "name": "Kent Wynn"
   }
