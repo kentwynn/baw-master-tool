@@ -2,24 +2,30 @@
 
 BAW Master Tool is a Chrome extension that provides an easy and convenient way to edit code directly in the browser. With BAW Master Tool, you can edit HTML, CSS, and JavaScript files in real-time and see your changes reflected instantly. Plus, there are much more features are developing such as Code Playgrounds, User Supports, Etc.
 
+# Statements
+- BAW is hard to find who are current edit the process, or working on the view, etc by just simply show their EDI. Which BAW Master tool, can easy to know the user information and contact point to the email.
+
+- Advance Code Editor is a wish to all BAW Dev replace that Old Version of Dojo Editor which is poor support in HTML, JS, HTML
+
+ 
 # Features
 
-Code highlighting for HTML, CSS, and JavaScript files
-Real-time editing and preview
-Easy to use interface
-Customizable theme and font size
-Supports multiple tabs for editing multiple files
-Export code as a text file
-Get BAW User Information
+- Code highlighting for HTML, CSS, and JavaScript files
+- Real-time editing and preview
+- Easy to use interface
+- Customizable theme and font size
+- Supports multiple tabs for editing multiple files
+- Export code as a text file
+- Get BAW User Information
 
 # Installation
 
 ## To install BAW Master Tool, follow these steps:
 
-Open the Chrome Web Store in your browser.
-Search for "BAW Master Tool" in the search bar.
-Click on the "Add to Chrome" button next to the BAW Master Tool extension.
-Confirm the installation by clicking on the "Add Extension" button in the pop-up window.
+- Open the Chrome Web Store in your browser.
+- Search for "BAW Master Tool" in the search bar.
+- Click on the "Add to Chrome" button next to the BAW Master Tool extension.
+- Confirm the installation by clicking on the "Add Extension" button in the pop-up window.
 
 # Usage
 
