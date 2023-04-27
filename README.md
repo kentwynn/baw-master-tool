@@ -20,8 +20,10 @@ BAW Master Tool is a Chrome extension that provides an easy and convenient way t
 
 # Screenshots
 
-![alt text](screenshots/1.jpg)![alt text](screenshots/2.jpg)
-![alt text](screenshots/3.jpg)![alt text](screenshots/4.jpg)
+![alt text](screenshots/1.jpg)
+![alt text](screenshots/2.jpg)
+![alt text](screenshots/3.jpg)
+![alt text](screenshots/4.jpg)
 
 # Installation
 
