@@ -8,8 +8,6 @@ BAW Master Tool is a Chrome extension that provides an easy and convenient way t
 
 - Advance Code Editor is a wish to all BAW Dev replace that Old Version of Dojo Editor which is poor support in HTML, JS, HTML
 
-
-
 # Features
 
 - Code highlighting for HTML, CSS, and JavaScript files
@@ -22,10 +20,12 @@ BAW Master Tool is a Chrome extension that provides an easy and convenient way t
 
 # Screenshots
 
+<p dir="auto" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
 ![alt text](screenshots/1.jpg)
 ![alt text](screenshots/2.jpg)
 ![alt text](screenshots/3.jpg)
 ![alt text](screenshots/4.jpg)
+</p>
 
 # Installation
 
