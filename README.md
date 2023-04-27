@@ -51,6 +51,10 @@ BAW Master Tool allows you to customize the theme and font size of the editor in
 
 If you encounter any issues with BAW Master Tool or have any questions, please feel free to contact us at kentwynn.media@gmail.com or https://kentwynn.com. We are happy to help you with any problems or concerns you may have.
 
+# Privacy
+
+The tool only works with BAW Server with Authorization. The error will notify for outside usage.
+
 # License
 
 BAW Master Tool is licensed under the MIT License.
