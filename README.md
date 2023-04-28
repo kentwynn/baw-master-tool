@@ -39,7 +39,7 @@ BAW Master Tool is a Chrome extension that provides an easy and convenient way t
 - Open the Extension Management page by navigating to chrome://extensions.
 - The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 - Enable Developer Mode by clicking the toggle switch next to Developer mode.
-- Clone the package from responsitory - The package will following the [Github packgage](https://github.com/kentwynn/baw-master-tool) after cloned to your local machine storage.
+- Clone the package from responsitory - The package will following the [Github packgage](https://github.com/kentwynn/baw-master-tool) after cloned to your local directory.
 - Click the LOAD UNPACKED button and select the extension directory.
 
 # Usage
