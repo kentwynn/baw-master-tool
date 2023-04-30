@@ -30,7 +30,7 @@ BAW Master Tool is a Chrome extension that provides an easy and convenient way t
 ## To online install BAW Master Tool, follow these steps:
 
 - Open the Chrome Web Store in your browser.
-- Search for "BAW Master Tool" in the search bar or [download from Chrome Webstore](https://chrome.google.com/webstore/detail/jmdhdbkomcnoajghlfoldjgfaajnbkaj/preview?hl=en&authuser=0).
+- Search for "BAW Master Tool" in the search bar or [download from Chrome Webstore](https://chrome.google.com/webstore/detail/baw-master-tool/jmgoiiilnjffgdomaaakpmiklcfikgag?hl=en&authuser=0).
 - Click on the "Add to Chrome" button next to the BAW Master Tool extension.
 - Confirm the installation by clicking on the "Add Extension" button in the pop-up window.
 
